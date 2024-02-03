@@ -1,17 +1,17 @@
-hexNumbers_dictionary = {
-'0': 0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'A':10, 'B':11, 'C':12, 'D':13, 'E':14, 'F':15
+hexNumbers = {
+    '0':0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9,
+    'A':10, 'B':11, 'C':12, 'D':13, 'E':14, 'F':15
 }
 def HexToDec(hexNum):
     for a in hexNum:
-            if a not in hexNumbers_dictionary:
-                return 'accepted inputs only numeric values from 0 to 9 and capital letters from A to F, included'
+        if a not in hexNumbers:
+            return print("Non puoi inserire lettere che non sono presenti nel sistema Esadecimale")
+        else:            
+            b = hexNum[::-1]
+            if len(b)<=3:
+                dec = hexNumbers[b[0]]
+                for i in range (1,len(b)):
+                    dec += (hexNumbers[b[i]])*(16**i)
+                return print('il calcolo restituisce:', dec,'.', 'Il valore di controllo è:', int(hexNum, 16))
             else:
-                b = hexNum[::-1]
-                if len(b)<=3:
-                    dec = hexNumbers_dictionary[b(0)]
-                    for i in range (1, len(b)):
-                        dec += (hexNumbers_dictionary[b[i]])*(16**i)
-                    return print('il calcolo restituisce:', dec,'.','Il valore di controllo è:', int(hexNumbers_dictionary,16))
-        
-                else:
-                    return 'il numero massimo di caratteri è 3'
+                return print("questo programma converte Esadecimali composti al massimo da tre cifre")
