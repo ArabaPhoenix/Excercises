@@ -2,12 +2,15 @@ def encoding_function(string_tobe_encoded):
 
     encoded_list = [] #creo una lista vuota. La lista conterrà tutti i tuple creati 
     prevChar = None # definisce una variabile e le assegna il valore "None"
-    counter = 1 #inizializzo il contatore ripetizione carattere a 1
+    counter = 0 #inizializzo il contatore ripetizione carattere a 0
     
     for char in string_tobe_encoded: #esamina tutti i caratteri della stringa "string_tobe_encoded"
         
+
         if char != prevChar: #confronto con il carattere in esame, "char", il valore assegnato alla variabile "prevChar" dichiarata in precedenza.
-            encoded_list.append((prevChar, counter)) #uso il comando append per aggiungere il tuple creato alla lista di tuple
+            
+            if counter >0: #uso questa condizione per evitare che nella lista di tuple appaia la tupla (None, 0), che non è né iterabile né indicizzabile per via di None
+                encoded_list.append((prevChar, counter)) #uso il comando append per aggiungere il tuple creato alla lista di tuple
             prevChar = char #il nuovo carattere viene memorizzato nella /assegnato alla variabile prevChar
             counter = 1 # re-inizializzo il contatore caratteri a 1, questo perché ho incontrato un nuovo carattere
             #print(f'New character is {char}')
@@ -16,4 +19,4 @@ def encoding_function(string_tobe_encoded):
         else:
             counter += 1 #se il carattere successivo al precedente è uguale al precedente, il contatore aumenta di uno
         
-    print(encoded_list)
+    print(encoded_list) #stampa la lista di tuple come lista della quale ciascun elemento è una tupla del tipo ('stringa', intero)
